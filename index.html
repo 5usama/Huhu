@@ -30,7 +30,6 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
         }
 
-        /* HEADER */
         .header {
             text-align: center;
             padding: 30px 0 20px;
@@ -63,22 +62,29 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* ADS TOP */
-        .ad-top {
-            background: rgba(30, 39, 64, 0.8);
-            padding: 12px;
+        /* SOCIAL BAR - Top par sticky */
+        .social-bar-container {
+            background: rgba(30, 39, 64, 0.95);
+            padding: 8px;
             border-radius: 16px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(0, 212, 255, 0.15);
+            margin-bottom: 25px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
             text-align: center;
-            min-height: 100px;
+            min-height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            position: sticky;
+            top: 10px;
+            z-index: 999;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
-        /* SECTIONS */
+        .social-bar-container #socialBar {
+            width: 100%;
+        }
+
         .section {
             background: rgba(20, 27, 43, 0.7);
             border-radius: 20px;
@@ -164,7 +170,6 @@
             border: 1px dashed #ff6b35;
         }
 
-        /* CREDIT SECTION */
         .credit-section {
             text-align: center;
             padding: 25px 0 15px;
@@ -194,6 +199,20 @@
             -webkit-text-fill-color: #aaa;
         }
 
+        /* Popunder - Footer ke neeche */
+        .popunder-container {
+            background: rgba(30, 39, 64, 0.8);
+            padding: 10px;
+            border-radius: 16px;
+            margin: 25px 0 10px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            text-align: center;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .footer {
             text-align: center;
             padding: 20px 0 5px;
@@ -221,7 +240,6 @@
             margin-top: 5px;
         }
 
-        /* Responsive */
         @media (max-width: 600px) {
             .container {
                 padding: 15px;
@@ -247,21 +265,10 @@
             .credit-section .credit-name {
                 font-size: 1.6rem;
             }
-        }
-
-        /* ADS BOTTOM */
-        .ad-bottom {
-            background: rgba(30, 39, 64, 0.8);
-            padding: 12px;
-            border-radius: 16px;
-            margin: 25px 0;
-            border: 1px solid rgba(0, 212, 255, 0.15);
-            text-align: center;
-            min-height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            .social-bar-container {
+                position: relative;
+                top: 0;
+            }
         }
     </style>
 </head>
@@ -275,10 +282,13 @@
             <div class="subtitle">✨ By Usama Dhuddi ✨</div>
         </div>
 
-        <!-- ====== ADS TOP ====== -->
-        <div class="ad-top" id="adTop">
-            <!-- Ad Code #1 -->
-            <script src="https://pl30384629.effectivecpmnetwork.com/f8/e8/24/f8e8242c752fe35b6ec314bce159e43d.js"></script>
+        <!-- ====== SOCIAL BAR (Top - Sticky) ====== -->
+        <div class="social-bar-container" id="socialBarContainer">
+            <div id="socialBar">
+                <!-- Social Bar Ad Code -->
+                <script src="https://pl30384629.effectivecpmnetwork.com/f8/e8/24/f8e8242c752fe35b6ec314bce159e43d.js">
+                </script>
+            </div>
         </div>
 
         <!-- ====== JAZZ SECTION ====== -->
@@ -321,21 +331,24 @@
             <div class="coming-soon-text">⏳ Files will be added soon...</div>
         </div>
 
-        <!-- ====== ADS BOTTOM ====== -->
-        <div class="ad-bottom" id="adBottom">
-            <!-- Ad Code #2 -->
-            <script src="https://pl30384628.effectivecpmnetwork.com/d9/7a/c7/d97ac78c975a8453ca13f4ff8a32b9c1.js"></script>
-        </div>
-
         <!-- ====== CREDIT SECTION ====== -->
         <div class="credit-section">
             <div class="credit-name">👑 RASHID king 👑</div>
             <div class="credit-role">★ Credit Goes To ★</div>
         </div>
 
+        <!-- ====== POPUNDER (Bottom - Last) ====== -->
+        <div class="popunder-container" id="popunderContainer">
+            <div id="popunder">
+                <!-- Popunder Ad Code -->
+                <script src="https://pl30384628.effectivecpmnetwork.com/d9/7a/c7/d97ac78c975a8453ca13f4ff8a32b9c1.js">
+                </script>
+            </div>
+        </div>
+
         <!-- ====== FOOTER ====== -->
         <div class="footer">
-            Created by 
+            Created by
             <a href="https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21" target="_blank">
                 Usama Dhuddi
             </a>
@@ -344,11 +357,21 @@
 
     </div>
 
-    <!-- ====== VERIFICATION SCRIPT (optional) ====== -->
+    <!-- ====== SCRIPT ====== -->
     <script>
         console.log('✅ Pakistan Free Internet - Website Loaded!');
         console.log('👑 Credit: RASHID king');
+        console.log('📢 Social Bar + Popunder Ads Added!');
         console.log('🔗 Channel: https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21');
+
+        // Social bar sticky on scroll (mobile fix)
+        window.addEventListener('scroll', function() {
+            const socialBar = document.getElementById('socialBarContainer');
+            if (window.scrollY > 100) {
+                socialBar.style.position = 'sticky';
+                socialBar.style.top = '10px';
+            }
+        });
     </script>
 
 </body>
