@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Internet Pakistan</title>
+    <title>Pakistan Free Internet</title>
     <style>
         * {
             margin: 0;
@@ -13,199 +13,343 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0b0e1a, #1a1f35);
+            background: linear-gradient(135deg, #0a0e1a, #1a1f3a, #0d1428);
             color: #fff;
-            padding: 20px;
             min-height: 100vh;
+            padding: 20px;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: auto;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 30px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
         }
 
-        h1 {
-            font-size: 3rem;
+        /* HEADER */
+        .header {
             text-align: center;
-            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            padding: 30px 0 20px;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 3.2rem;
+            background: linear-gradient(90deg, #00d4ff, #00ff88, #00d4ff);
+            background-size: 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-top: 20px;
+            animation: shimmer 3s ease-in-out infinite;
+            letter-spacing: 2px;
         }
 
-        h2 {
-            text-align: center;
-            font-size: 1.8rem;
+        .header .subtitle {
             color: #00d4ff;
-            margin-bottom: 5px;
+            font-size: 1.3rem;
+            margin-top: 5px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            -webkit-text-fill-color: #00d4ff;
         }
 
-        .sub {
-            text-align: center;
-            color: #aaa;
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ADS TOP */
+        .ad-top {
+            background: rgba(30, 39, 64, 0.8);
+            padding: 12px;
+            border-radius: 16px;
             margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-
-        .ad-top,
-        .ad-bottom {
-            background: #1e2740;
-            padding: 15px;
-            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.15);
             text-align: center;
-            margin: 20px 0;
-            border: 2px dashed #00d4ff;
-            min-height: 80px;
+            min-height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
 
-        .ad-top p,
-        .ad-bottom p {
-            color: #666;
-            font-size: 0.9rem;
+        /* SECTIONS */
+        .section {
+            background: rgba(20, 27, 43, 0.7);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 6px solid #00d4ff;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
-        .card {
-            background: #141b2b;
-            padding: 22px 25px;
-            border-radius: 16px;
-            margin: 18px 0;
-            border-left: 5px solid #00d4ff;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1);
+        .section:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-left-color: #00ff88;
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.15);
         }
 
-        .card:hover {
-            transform: translateX(8px);
-            box-shadow: 0 4px 25px rgba(0, 212, 255, 0.2);
-        }
-
-        .card h3 {
-            color: #00d4ff;
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-
-        .card p {
-            color: #bbb;
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
             margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .btn {
-            display: inline-block;
+        .section-title .icon {
+            font-size: 2.2rem;
+        }
+
+        .section-title .badge {
+            font-size: 0.8rem;
             background: #00d4ff;
             color: #000;
-            padding: 10px 30px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-left: 10px;
         }
 
-        .btn:hover {
-            background: #00ff88;
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+        .section-title .badge.coming {
+            background: #ff6b35;
+            color: #fff;
+        }
+
+        .files-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .file-btn {
+            background: linear-gradient(135deg, #00d4ff, #0088cc);
+            color: #000;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
+        }
+
+        .file-btn:hover {
+            transform: scale(1.08);
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            box-shadow: 0 6px 30px rgba(0, 255, 136, 0.4);
+        }
+
+        .coming-soon-text {
+            color: #ff6b35;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 8px 20px;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 30px;
+            display: inline-block;
+            border: 1px dashed #ff6b35;
+        }
+
+        /* CREDIT SECTION */
+        .credit-section {
+            text-align: center;
+            padding: 25px 0 15px;
+            margin-top: 20px;
+            border-top: 2px solid rgba(0, 212, 255, 0.15);
+        }
+
+        .credit-section .credit-name {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ffd700, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .credit-section .credit-role {
+            color: #aaa;
+            font-size: 1rem;
+            margin-top: 2px;
+            -webkit-text-fill-color: #aaa;
         }
 
         .footer {
             text-align: center;
-            margin-top: 40px;
-            padding: 20px;
+            padding: 20px 0 5px;
             color: #555;
-            border-top: 1px solid #1e2740;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 20px;
         }
 
-        /* Mobile Responsive */
+        .footer a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .footer a:hover {
+            color: #00ff88;
+            text-decoration: underline;
+        }
+
+        .footer .date {
+            color: #444;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        /* Responsive */
         @media (max-width: 600px) {
-            h1 {
+            .container {
+                padding: 15px;
+            }
+            .header h1 {
                 font-size: 2rem;
             }
-            h2 {
-                font-size: 1.3rem;
+            .header .subtitle {
+                font-size: 1rem;
             }
-            .card {
-                padding: 16px 18px;
+            .section-title {
+                font-size: 1.5rem;
             }
-            .btn {
-                padding: 8px 20px;
-                font-size: 0.9rem;
+            .file-btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+                width: 100%;
+                justify-content: center;
             }
+            .files-list {
+                flex-direction: column;
+            }
+            .credit-section .credit-name {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* ADS BOTTOM */
+        .ad-bottom {
+            background: rgba(30, 39, 64, 0.8);
+            padding: 12px;
+            border-radius: 16px;
+            margin: 25px 0;
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
     </style>
 </head>
 <body>
+
     <div class="container">
 
-        <!-- ADS SPACE #1 -->
-        <div class="ad-top" id="ad1">
-            <p>📢 Yahan Ad Code Aayega (AdSense/PopAds)</p>
+        <!-- ====== HEADER ====== -->
+        <div class="header">
+            <h1>🇵🇰 Pakistan Free Internet</h1>
+            <div class="subtitle">✨ By Usama Dhuddi ✨</div>
         </div>
 
-        <h1>📶 Free Internet</h1>
-        <h2>Pakistan 🇵🇰</h2>
-        <p class="sub">HTTP Custom Configs - Daily Updated</p>
-
-        <!-- CONFIG CARDS -->
-        <div class="card">
-            <h3>📁 Config Pack #1</h3>
-            <p>⚡ High Speed Servers</p>
-            <a href="https://drive.google.com/your-link-1" class="btn">Download</a>
+        <!-- ====== ADS TOP ====== -->
+        <div class="ad-top" id="adTop">
+            <!-- Ad Code #1 -->
+            <script src="https://pl30384629.effectivecpmnetwork.com/f8/e8/24/f8e8242c752fe35b6ec314bce159e43d.js"></script>
         </div>
 
-        <div class="card">
-            <h3>📁 Config Pack #2</h3>
-            <p>📱 Social Media + YouTube</p>
-            <a href="https://drive.google.com/your-link-2" class="btn">Download</a>
+        <!-- ====== JAZZ SECTION ====== -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">📶</span> Jazz
+                <span class="badge">● Active</span>
+            </div>
+            <div class="files-list">
+                <a href="https://drive.google.com/your-jazz-file-1" class="file-btn">📥 Jazz Config 1</a>
+                <a href="https://drive.google.com/your-jazz-file-2" class="file-btn">📥 Jazz Config 2</a>
+                <a href="https://drive.google.com/your-jazz-file-3" class="file-btn">📥 Jazz Config 3</a>
+            </div>
         </div>
 
-        <div class="card">
-            <h3>📁 Config Pack #3</h3>
-            <p>🎮 Gaming + Low Ping</p>
-            <a href="https://drive.google.com/your-link-3" class="btn">Download</a>
+        <!-- ====== ZONG SECTION ====== -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">📱</span> Zong
+                <span class="badge coming">● Coming Soon</span>
+            </div>
+            <div class="coming-soon-text">⏳ Files will be added soon...</div>
         </div>
 
-        <div class="card">
-            <h3>📁 Config Pack #4</h3>
-            <p>🌍 All Networks Supported</p>
-            <a href="https://drive.google.com/your-link-4" class="btn">Download</a>
+        <!-- ====== TELENOR SECTION ====== -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">📡</span> Telenor
+                <span class="badge coming">● Coming Soon</span>
+            </div>
+            <div class="coming-soon-text">⏳ Files will be added soon...</div>
         </div>
 
-        <!-- ADS SPACE #2 -->
-        <div class="ad-bottom" id="ad2">
-            <p>📢 Yahan Bhi Ad Code Aayega</p>
+        <!-- ====== UFONE SECTION ====== -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">📞</span> Ufone
+                <span class="badge coming">● Coming Soon</span>
+            </div>
+            <div class="coming-soon-text">⏳ Files will be added soon...</div>
         </div>
 
+        <!-- ====== ADS BOTTOM ====== -->
+        <div class="ad-bottom" id="adBottom">
+            <!-- Ad Code #2 -->
+            <script src="https://pl30384628.effectivecpmnetwork.com/d9/7a/c7/d97ac78c975a8453ca13f4ff8a32b9c1.js"></script>
+        </div>
+
+        <!-- ====== CREDIT SECTION ====== -->
+        <div class="credit-section">
+            <div class="credit-name">👑 RASHID king 👑</div>
+            <div class="credit-role">★ Credit Goes To ★</div>
+        </div>
+
+        <!-- ====== FOOTER ====== -->
         <div class="footer">
-            Made with ❤️ for Pakistan | Daily Updates
+            Created by 
+            <a href="https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21" target="_blank">
+                Usama Dhuddi
+            </a>
+            <div class="date">📅 16 July 2026</div>
         </div>
+
     </div>
 
+    <!-- ====== VERIFICATION SCRIPT (optional) ====== -->
     <script>
-        // Website Ready Message
-        console.log('🚀 Free Internet Pakistan - Website Live!');
-
-        // Agar ad code dynamically insert karna ho toh
-        // Example: AdSense code yahan se bhi daal sakte hain
-
-        // Google Drive links auto-update (future use)
-        const configs = {
-            pack1: 'https://drive.google.com/your-link-1',
-            pack2: 'https://drive.google.com/your-link-2',
-            pack3: 'https://drive.google.com/your-link-3',
-            pack4: 'https://drive.google.com/your-link-4'
-        };
-
-        // Agar koi dynamic feature chahiye toh
-        document.querySelectorAll('.btn').forEach((btn, index) => {
-            btn.addEventListener('click', function(e) {
-                console.log(`📥 Downloading Config Pack ${index + 1}`);
-            });
-        });
+        console.log('✅ Pakistan Free Internet - Website Loaded!');
+        console.log('👑 Credit: RASHID king');
+        console.log('🔗 Channel: https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21');
     </script>
+
 </body>
 </html>
