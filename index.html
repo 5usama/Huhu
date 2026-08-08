@@ -1,492 +1,595 @@
 <!DOCTYPE html>
 <html lang="ur">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pakistan Free Internet</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Internet · Usama Dhuddi</title>
+  <!-- Google Font (VIP style) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            background: linear-gradient(135deg, #0a0e1a, #1a1f3a, #0d1428);
-            color: #fff;
-            min-height: 100vh;
-            padding: 20px;
-        }
+    body {
+      background: #f6f9fc;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 30px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-        }
+    .card {
+      max-width: 580px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 48px 48px 32px 32px;
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08), 0 8px 24px -6px rgba(0, 0, 0, 0.02);
+      padding: 32px 28px 28px;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(2px);
+    }
 
-        .header {
-            text-align: center;
-            padding: 30px 0 20px;
-            border-bottom: 2px solid rgba(0, 212, 255, 0.2);
-            margin-bottom: 30px;
-        }
+    /* VIP header */
+    .vip-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 2px solid #f0f4f9;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
 
-        .header h1 {
-            font-size: 3.2rem;
-            background: linear-gradient(90deg, #00d4ff, #00ff88, #00d4ff);
-            background-size: 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 3s ease-in-out infinite;
-            letter-spacing: 2px;
-        }
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
 
-        .header .subtitle {
-            color: #00d4ff;
-            font-size: 1.3rem;
-            margin-top: 5px;
-            font-weight: 300;
-            letter-spacing: 3px;
-            -webkit-text-fill-color: #00d4ff;
-        }
+    .brand-main {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #0b1e33, #1b3a5c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
 
-        @keyframes shimmer {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    .brand-sub {
+      font-size: 15px;
+      font-weight: 600;
+      color: #7e8c9e;
+      letter-spacing: 0.3px;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-        /* SOCIAL BAR - Top par sticky */
-        .social-bar-container {
-            background: rgba(30, 39, 64, 0.95);
-            padding: 8px;
-            border-radius: 16px;
-            margin-bottom: 25px;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            text-align: center;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: sticky;
-            top: 10px;
-            z-index: 999;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
+    .brand-sub span {
+      background: #eef3f8;
+      padding: 2px 12px 2px 10px;
+      border-radius: 40px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a2e44;
+      -webkit-text-fill-color: #1a2e44;
+      letter-spacing: 0.2px;
+    }
 
-        .social-bar-container #socialBar {
-            width: 100%;
-        }
+    .vip-badge {
+      background: #d4af37;
+      background: linear-gradient(145deg, #e4c15a, #c9a12b);
+      padding: 6px 18px 6px 16px;
+      border-radius: 60px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #0a1a2a;
+      box-shadow: 0 4px 8px rgba(212, 175, 55, 0.2);
+      letter-spacing: 0.3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid #f5e08b;
+    }
 
-        .section {
-            background: rgba(20, 27, 43, 0.7);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-left: 6px solid #00d4ff;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
+    .vip-badge::before {
+      content: "★";
+      font-size: 18px;
+      color: #221f0c;
+    }
 
-        .section:hover {
-            transform: translateY(-5px) scale(1.01);
-            border-left-color: #00ff88;
-            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.15);
-        }
+    /* sections grid */
+    .sections {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 20px 0 28px;
+    }
 
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+    .section-item {
+      background: #f2f6fb;
+      border-radius: 20px;
+      padding: 12px 4px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 16px;
+      color: #1d3349;
+      transition: 0.15s ease;
+      border: 1px solid transparent;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+      letter-spacing: -0.2px;
+    }
 
-        .section-title .icon {
-            font-size: 2.2rem;
-        }
+    .section-item.jazz {
+      background: #e4edf8;
+      border-color: #b7cee8;
+    }
+    .section-item.zong {
+      background: #eef3f0;
+      border-color: #c7dbd0;
+    }
+    .section-item.telenor {
+      background: #e1eef5;
+      border-color: #b3d2e3;
+    }
+    .section-item.ufone {
+      background: #f0eff7;
+      border-color: #cdc9e6;
+    }
+    .section-item.onic {
+      background: #f3edf2;
+      border-color: #ddc9d9;
+    }
+    .section-item.coming {
+      opacity: 0.7;
+      background: #f2f2f2;
+      border-color: #d9d9d9;
+      color: #5f6f7e;
+      font-weight: 500;
+    }
+    .section-item.coming::after {
+      content: " soon";
+      font-size: 11px;
+      font-weight: 400;
+      color: #8899aa;
+      display: block;
+      margin-top: 2px;
+    }
 
-        .section-title .badge {
-            font-size: 0.8rem;
-            background: #00d4ff;
-            color: #000;
-            padding: 2px 14px;
-            border-radius: 30px;
-            font-weight: 600;
-            margin-left: 10px;
-        }
+    /* file cards */
+    .file-card {
+      background: #fafcff;
+      border-radius: 24px;
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      border: 1px solid #e6edf5;
+      transition: 0.15s;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-        .section-title .badge.coming {
-            background: #ff6b35;
-            color: #fff;
-        }
+    .file-card:hover {
+      border-color: #bdd2e9;
+      background: #f8fbff;
+    }
 
-        .files-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 10px;
-        }
+    .file-info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
 
-        .file-btn {
-            background: linear-gradient(135deg, #00d4ff, #0088cc);
-            color: #000;
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
-        }
+    .file-label {
+      font-weight: 700;
+      font-size: 16px;
+      color: #0b1e30;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        .file-btn:hover {
-            transform: scale(1.08);
-            background: linear-gradient(135deg, #00ff88, #00d4ff);
-            box-shadow: 0 6px 30px rgba(0, 255, 136, 0.4);
-        }
+    .file-label small {
+      font-weight: 400;
+      font-size: 13px;
+      color: #6c7f94;
+      background: #eef3f9;
+      padding: 0 12px;
+      border-radius: 30px;
+    }
 
-        .coming-soon-text {
-            color: #ff6b35;
-            font-size: 1.2rem;
-            font-weight: 600;
-            padding: 8px 20px;
-            background: rgba(255, 107, 53, 0.1);
-            border-radius: 30px;
-            display: inline-block;
-            border: 1px dashed #ff6b35;
-        }
+    .file-link {
+      font-size: 13px;
+      color: #2b6c9e;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px dashed #b3cbe2;
+      word-break: break-all;
+      margin-top: 4px;
+      max-width: 220px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-        /* Video Section Styles */
-        .video-section {
-            margin-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-        }
+    .file-link:hover {
+      color: #0b3d63;
+      border-bottom-color: #0b3d63;
+    }
 
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 16px;
-            margin-bottom: 15px;
-            background: #000;
-        }
+    /* DOWNLOAD BUTTON - now triggers the link */
+    .btn-download {
+      background: #1d3b5a;
+      background: linear-gradient(145deg, #1f3f60, #152c44);
+      border: none;
+      border-radius: 40px;
+      padding: 8px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      border: 1px solid #3a5f82;
+      box-shadow: 0 4px 8px rgba(0, 20, 40, 0.15);
+      cursor: pointer;
+      transition: 0.15s ease;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+    .btn-download:hover {
+      background: #264b6e;
+      transform: scale(0.97);
+      box-shadow: 0 2px 6px rgba(0, 20, 40, 0.2);
+    }
 
-        .video-btn {
-            background: linear-gradient(135deg, #ff0000, #cc0000);
-            color: #fff;
-            padding: 14px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
-            margin-top: 5px;
-        }
+    .btn-download:active {
+      transform: scale(0.94);
+    }
 
-        .video-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 35px rgba(255, 0, 0, 0.5);
-            background: linear-gradient(135deg, #ff3333, #dd0000);
-        }
+    .coming-soon-tag {
+      background: #eef2f6;
+      color: #5b6e82;
+      border-radius: 40px;
+      padding: 4px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid #d7e0e9;
+    }
 
-        .video-btn i {
-            font-size: 1.4rem;
-        }
+    /* app image + caption */
+    .app-section {
+      margin: 28px 0 20px;
+      background: #f2f8fe;
+      border-radius: 32px;
+      padding: 18px 18px 14px;
+      text-align: center;
+      border: 1px solid #dae6f2;
+    }
 
-        .credit-section {
-            text-align: center;
-            padding: 25px 0 15px;
-            margin-top: 20px;
-            border-top: 2px solid rgba(0, 212, 255, 0.15);
-        }
+    .app-image {
+      width: 100%;
+      max-height: 140px;
+      object-fit: cover;
+      border-radius: 24px;
+      background: #dce6f0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    }
 
-        .credit-section .credit-name {
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, #ffd700, #ff6b35);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-            animation: pulse 2s ease-in-out infinite;
-        }
+    .app-caption {
+      margin-top: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #092032;
+      letter-spacing: -0.2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+    }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
+    .app-caption .app-name {
+      background: #0b1f32;
+      padding: 4px 18px 4px 16px;
+      border-radius: 60px;
+      color: white;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      border: 1px solid #263d55;
+    }
 
-        .credit-section .credit-role {
-            color: #aaa;
-            font-size: 1rem;
-            margin-top: 2px;
-            -webkit-text-fill-color: #aaa;
-        }
+    .app-caption .roman-urdu {
+      font-weight: 600;
+      color: #1b3f5c;
+      background: #e4ecf5;
+      padding: 4px 18px;
+      border-radius: 60px;
+      font-size: 16px;
+    }
 
-        /* Popunder - Footer ke neeche */
-        .popunder-container {
-            background: rgba(30, 39, 64, 0.8);
-            padding: 10px;
-            border-radius: 16px;
-            margin: 25px 0 10px;
-            border: 1px solid rgba(255, 107, 53, 0.2);
-            text-align: center;
-            min-height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    /* footer / whatsapp links + credit */
+    .footer-links {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 2px solid #eef3f9;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
-        .footer {
-            text-align: center;
-            padding: 20px 0 5px;
-            color: #555;
-            font-size: 0.95rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 20px;
-        }
+    .footer-links .links-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 6px 14px;
+    }
 
-        .footer a {
-            color: #00d4ff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
+    .footer-links a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      color: #1e3d5e;
+      background: #eef4fa;
+      padding: 4px 16px 4px 14px;
+      border-radius: 60px;
+      border: 1px solid #d3e0ed;
+      transition: 0.1s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: -0.1px;
+    }
 
-        .footer a:hover {
-            color: #00ff88;
-            text-decoration: underline;
-        }
+    .footer-links a:hover {
+      background: #e1ecf8;
+      border-color: #b0c9e2;
+      color: #07273f;
+    }
 
-        .footer .date {
-            color: #444;
-            font-size: 0.85rem;
-            margin-top: 5px;
-        }
+    .footer-links a i {
+      font-style: normal;
+      font-size: 16px;
+      margin-right: 2px;
+    }
 
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
-            .header h1 {
-                font-size: 2rem;
-            }
-            .header .subtitle {
-                font-size: 1rem;
-            }
-            .section-title {
-                font-size: 1.5rem;
-            }
-            .file-btn {
-                padding: 10px 20px;
-                font-size: 0.85rem;
-                width: 100%;
-                justify-content: center;
-            }
-            .files-list {
-                flex-direction: column;
-            }
-            .credit-section .credit-name {
-                font-size: 1.6rem;
-            }
-            .social-bar-container {
-                position: relative;
-                top: 0;
-            }
-            .video-btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-    </style>
+    .credit-line {
+      margin-top: 14px;
+      text-align: center;
+      font-size: 14px;
+      color: #3e586e;
+      font-weight: 500;
+      line-height: 1.6;
+      background: #f4f8fd;
+      padding: 10px 10px;
+      border-radius: 40px;
+      border: 1px solid #e6eef7;
+    }
+
+    .credit-line .highlight {
+      font-weight: 700;
+      color: #0b263d;
+      background: #dfe9f3;
+      padding: 0 10px;
+      border-radius: 30px;
+    }
+
+    .credit-line .king {
+      font-weight: 800;
+      color: #b8860b;
+      letter-spacing: 0.3px;
+    }
+
+    .credit-line .contact-badge {
+      font-weight: 600;
+      background: #dce6f0;
+      padding: 0 12px;
+      border-radius: 30px;
+      color: #002b4a;
+    }
+
+    .footer-note {
+      font-size: 13px;
+      color: #6f849a;
+      text-align: center;
+      margin-top: 14px;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+    }
+
+    .footer-note i {
+      font-style: normal;
+      background: #eef3f9;
+      padding: 2px 10px;
+      border-radius: 30px;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .card {
+        padding: 24px 16px 22px;
+        border-radius: 32px;
+      }
+      .sections {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      .section-item {
+        font-size: 14px;
+        padding: 10px 2px;
+      }
+      .vip-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .vip-badge {
+        font-size: 14px;
+        padding: 4px 14px;
+      }
+      .file-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .file-link {
+        max-width: 100%;
+        white-space: normal;
+      }
+      .app-caption {
+        font-size: 16px;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .footer-links .links-row {
+        gap: 6px 8px;
+      }
+      .footer-links a {
+        font-size: 12px;
+        padding: 3px 12px;
+      }
+      .btn-download {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <div class="container">
-
-        <!-- ====== HEADER ====== -->
-        <div class="header">
-            <h1>🇵🇰 Pakistan Free Internet</h1>
-            <div class="subtitle">✨ By Usama Dhuddi ✨</div>
+  <div class="card">
+    <!-- VIP header -->
+    <div class="vip-header">
+      <div class="brand">
+        <div class="brand-main">Free Internet</div>
+        <div class="brand-sub">
+          by <span>Usama Dhuddi</span>
         </div>
-
-        <!-- ====== SOCIAL BAR (Top - Sticky) ====== -->
-        <div class="social-bar-container" id="socialBarContainer">
-            <div id="socialBar">
-                <!-- Social Bar Ad Code -->
-                <script src="https://pl30384629.effectivecpmnetwork.com/f8/e8/24/f8e8242c752fe35b6ec314bce159e43d.js">
-                </script>
-            </div>
-        </div>
-
-        <!-- ====== JAZZ SECTION ====== -->
-        <div class="section">
-            <div class="section-title">
-                <span class="icon">📶</span> Jazz
-                <span class="badge">● Active</span>
-            </div>
-            <div class="files-list">
-                <a href="https://www.mediafire.com/file/mrqc41isr83bffd/jazz+28+July+Fast.hc/file" class="file-btn">📥 Jazz 28 July (Tested ✅)</a>
-                <a href="https://www.mediafire.com/file/bu1qtafcgov8p7r/Jazz+v2ray.hc/file" class="file-btn">📥 Jazz 28 July (v2ray)</a>
-                <a href="https://tmpfiles.org/wbw6Rw8wjjg8/jazz3august.hc" class="file-btn">📥 Jazz 3 August (100% Works)</a>
-                <a href="https://file.kiwi/638a06f6#-95x9DnAVuUCCYTP6hXLNg" class="file-btn">📥 Jazz 6 August (USA)</a>
-            
-            </div>
-        </div>
-
-        <!-- ====== ZONG SECTION ====== -->
-        <div class="section">
-            <div class="section-title">
-                <span class="icon">📱</span> Zong
-                <span class="badge">● Active</span>
-            </div>
-            <div class="files-list">
-                <a href="https://drive.google.com/file/d/1D2VXsEiGWbJO9KXt1tDXI5wZ_0e40G6T/view?usp=drivesdk" class="file-btn">📥 Zong 24 July</a>
-                <a href="https://drive.google.com/file/d/1iOCxrjdhkj4zyeBMex-EVVN7cdYjSFHE/view?usp=drivesdk" class="file-btn">📥 Zong 26 july Fast</a>
-                <a href="https://drive.google.com/file/d/1RkG8XAqYrPQVBgzZ8wmE0ZpQ-IctUQ0P/view?usp=drivesdk" class="file-btn">📥 Zong 27 July (Tested ✅)</a>
-                <a href="https://www.mediafire.com/file/ltm8d2c6kz5rlzw/Zong+Latest.hc/file" class="file-btn">📥 Zong 28 July (fast)</a>
-            </div>
-        </div>
-
-        <!-- ====== TELENOR SECTION ====== -->
-        <div class="section">
-            <div class="section-title">
-                <span class="icon">📡</span> Telenor
-                <span class="badge">● Active</span>
-            </div>
-            <div class="files-list">
-                <a href="https://drive.google.com/file/d/1rb-pz5D1qSUZjZtgWc58NnCckH1j42uG/view?usp=drivesdk" class="file-btn">📥 Telenor 27 July (fresh)</a>
-                <a href="https://www.mediafire.com/file/5y3imh1ccl2g4dn/telenor+28+july+fast.hc/file" class="file-btn">📥 Telenor 28 July (Fresh)</a>
-                <a href="https://tmpfiles.org/w9wgRC8ta4IF/telenor3august.hc" class="file-btn">📥 Telenor 3 August</a>
-                <a href="https://file.kiwi/44f4499e#n00gJk032nWafmiwtzxcPw" class="file-btn">📥 Telenor 6 August (USA Server)</a>
-            </div>
-        </div>
-
-        <!-- ====== UFONE SECTION ====== -->
-        <div class="section">
-            <div class="section-title">
-                <span class="icon">📞</span> Ufone
-                <span class="badge">● Active</span>
-            </div>
-            <div class="files-list">
-                <a href="https://drive.google.com/file/d/1XVKauDSoXok801cmbMn9A-iSUamzgLJv/view?usp=drivesdk" class="file-btn">📥 Ufone 24 July</a>
-                <a href="https://drive.google.com/file/d/1-doreiD4mKvKeGcGl4TiVpqu9v6amp79/view?usp=drivesdk" class="file-btn">📥 Ufone 27 July (Fast)</a>
-                <a href="https://tmpfiles.org/w5w4R38marRM/ufone3august.hc" class="file-btn">📥 Ufone 3 August (TESTED ✅)</a>
-                <a href="https://file.kiwi/d49bad69#_W5J8Vl2RjdAjDYctshsiw" class="file-btn">📥 Ufone 6 August (USA)</a>
-            </div>
-        </div>
-
-        <!-- ====== ONIC SECTION ====== -->
-        <div class="section">
-            <div class="section-title">
-                <span class="icon">📞</span> Onic
-                <span class="badge">● Active</span>
-            </div>
-            <div class="files-list">
-                <a href="https://tmpfiles.org/w6wFRp8WabiB/onic3august.hc" class="file-btn">📥 Onic 3 August</a>
-            </div>
-        </div>
-
-        <!-- ====== METHOD VIDEO SECTION (New) ====== -->
-        <div class="section" style="border-left-color: #ff6b35;">
-            <div class="section-title">
-                <span class="icon">🎥</span> Method Video
-                <span class="badge" style="background: #ff6b35; color: #fff;">● Watch</span>
-            </div>
-            
-            <!-- YouTube Embedded Player -->
-            <div class="video-wrapper">
-                <iframe 
-                    src="https://www.youtube.com/embed/vhl5_5U3PSQ" 
-                    title="YouTube video player" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-            
-            <!-- Redirect Button -->
-            <div style="display: flex; justify-content: center; margin-top: 5px;">
-                <a href="https://youtu.be/vhl5_5U3PSQ" target="_blank" class="video-btn">
-                    ▶️ Watch Full Video on YouTube
-                </a>
-            </div>
-            <p style="text-align: center; color: #aaa; font-size: 0.9rem; margin-top: 12px;">
-                🔔 Click the button above to watch the method video on YouTube
-            </p>
-        </div>
-
-        <!-- ====== CREDIT SECTION ====== -->
-        <div class="credit-section">
-            <div class="credit-name">👑 RASHID king 👑</div>
-            <div class="credit-role">★ Credit Goes To ★</div>
-        </div>
-
-        <!-- ====== POPUNDER (Bottom - Last) ====== -->
-        <div class="popunder-container" id="popunderContainer">
-            <div id="popunder">
-                <!-- Popunder Ad Code -->
-                <script src="https://pl30384628.effectivecpmnetwork.com/d9/7a/c7/d97ac78c975a8453ca13f4ff8a32b9c1.js">
-                </script>
-            </div>
-        </div>
-
-        <!-- ====== FOOTER ====== -->
-        <div class="footer">
-            Created by
-            <a href="https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21" target="_blank">
-                Usama Dhuddi
-            </a>
-            <div class="date">📅 16 July 2026</div>
-        </div>
-
+      </div>
+      <div class="vip-badge">Dhuddi 👑</div>
     </div>
 
-    <!-- ====== SCRIPT ====== -->
-    <script>
-        console.log('✅ Pakistan Free Internet - Website Loaded!');
-        console.log('👑 Credit: RASHID king');
-        console.log('📢 Social Bar + Popunder Ads Added!');
-        console.log('🔗 Channel: https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21');
-        console.log('🎥 Method Video Added: https://youtu.be/vhl5_5U3PSQ');
+    <!-- Sections: Jazz, Zong, Telenor, Ufone, Onic -->
+    <div class="sections">
+      <div class="section-item jazz">Jazz</div>
+      <div class="section-item zong">Zong</div>
+      <div class="section-item telenor">Telenor</div>
+      <div class="section-item ufone">Ufone</div>
+      <div class="section-item onic">Onic</div>
+    </div>
 
-        // Social bar sticky on scroll (mobile fix)
-        window.addEventListener('scroll', function() {
-            const socialBar = document.getElementById('socialBarContainer');
-            if (window.scrollY > 100) {
-                socialBar.style.position = 'sticky';
-                socialBar.style.top = '10px';
-            }
-        });
-    </script>
+    <!-- Jazz file (provided) - button triggers link -->
+    <div class="file-card">
+      <div class="file-info">
+        <div class="file-label">
+          Jazz <small>8 August</small>
+        </div>
+        <!-- link hidden, only for reference, but we use button -->
+        <a href="https://fileshot.io/f/ff799e1ea4ff36af28f528fb62f546ef#k=6y26WmDY984GJ7cWbzzveUT-7xpemc-tN1dea4arsb8&h=CvuPcKT0grxT8vk-NfEjfYUsWl9SblCS5fKn5japNi0" target="_blank" class="file-link" id="jazzLink" style="display:none;">fileshot.io/f/ff799e...</a>
+        <span style="font-size:13px; color:#4f6d88; margin-top:4px;">Tap button to download</span>
+      </div>
+      <button class="btn-download" onclick="document.getElementById('jazzLink').click()">⬇ Download</button>
+    </div>
 
+    <!-- Telenor file (provided) - button triggers link -->
+    <div class="file-card">
+      <div class="file-info">
+        <div class="file-label">
+          Telenor <small>8 August</small>
+        </div>
+        <a href="https://fileshot.io/f/e5b48df5e30bb42d7157b60fd70e6027#k=mNzd0HkAYA1ytroH6rvpPrOHny4_qZMRYvtFDkYROF4&h=yvEdZyiHsPZefCDQiC8WZa8mTGxan3e7WdI7vP7XYuk" target="_blank" class="file-link" id="telenorLink" style="display:none;">fileshot.io/f/e5b48d...</a>
+        <span style="font-size:13px; color:#4f6d88; margin-top:4px;">Tap button to download</span>
+      </div>
+      <button class="btn-download" onclick="document.getElementById('telenorLink').click()">⬇ Download</button>
+    </div>
+
+    <!-- Zong, Ufone, Onic coming soon -->
+    <div class="file-card" style="opacity:0.75;">
+      <div class="file-info">
+        <div class="file-label">
+          Zong <small>coming soon</small>
+        </div>
+        <span class="file-link" style="color:#8299ae; border-bottom: none;">—</span>
+      </div>
+      <span class="coming-soon-tag">soon</span>
+    </div>
+
+    <div class="file-card" style="opacity:0.75;">
+      <div class="file-info">
+        <div class="file-label">
+          Ufone <small>coming soon</small>
+        </div>
+        <span class="file-link" style="color:#8299ae; border-bottom: none;">—</span>
+      </div>
+      <span class="coming-soon-tag">soon</span>
+    </div>
+
+    <div class="file-card" style="opacity:0.75;">
+      <div class="file-info">
+        <div class="file-label">
+          Onic <small>coming soon</small>
+        </div>
+        <span class="file-link" style="color:#8299ae; border-bottom: none;">—</span>
+      </div>
+      <span class="coming-soon-tag">soon</span>
+    </div>
+
+    <!-- App image + caption -->
+    <div class="app-section">
+      <img 
+        src="https://www.image2url.com/r2/default/images/1786195784635-c70edac5-559a-4875-9bdc-a16a04757025.jpg" 
+        alt="e-v2ray app" 
+        class="app-image"
+        loading="lazy"
+      />
+      <div class="app-caption">
+        <span class="app-name">e-v2ray</span>
+        <span class="roman-urdu">"Ye App Download kro Or Files Upload k k Connect Kro"</span>
+      </div>
+    </div>
+
+    <!-- FOOTER: WhatsApp links + Credit -->
+    <div class="footer-links">
+      <div class="links-row">
+        <a href="https://chat.whatsapp.com/HItKQi26s0KHMteTzGp99b?s=cl&p=a&ilr=0" target="_blank" rel="noopener">
+          <i>💬</i> WhatsApp Group 1
+        </a>
+        <a href="https://chat.whatsapp.com/IWkmYWoOcEG9idQzfvIpjO?s=cl&p=a&ilr=0" target="_blank" rel="noopener">
+          <i>💬</i> WhatsApp Group 2
+        </a>
+        <a href="https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21" target="_blank" rel="noopener">
+          <i>📢</i> WhatsApp Channel
+        </a>
+      </div>
+
+      <div class="credit-line">
+        <span class="highlight">Created by Usama Dhuddi</span>  
+        <span class="contact-badge">(Contact if you want your own Web like this)</span>  
+        <br />
+        <span class="king">👑 Credit : Rashid King 👑</span>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <i>✦ Created : 08 August 2026✦</i>
+    </div>
+  </div>
+
+  <script>
+    // (optional) any extra safety: all good, buttons use onclick to trigger hidden links
+  </script>
 </body>
 </html>
