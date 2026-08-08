@@ -108,6 +108,29 @@
       color: #221f0c;
     }
 
+    /* ADS - Social Bar (from old website) */
+    .social-bar-container {
+      background: rgba(30, 39, 64, 0.95);
+      padding: 8px;
+      border-radius: 16px;
+      margin-bottom: 25px;
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      text-align: center;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: sticky;
+      top: 10px;
+      z-index: 999;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .social-bar-container #socialBar {
+      width: 100%;
+    }
+
     /* sections grid */
     .sections {
       display: grid;
@@ -321,6 +344,24 @@
       font-size: 16px;
     }
 
+    /* ADS - Popunder (from old website) */
+    .popunder-container {
+      background: rgba(30, 39, 64, 0.8);
+      padding: 10px;
+      border-radius: 16px;
+      margin: 25px 0 10px;
+      border: 1px solid rgba(255, 107, 53, 0.2);
+      text-align: center;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popunder-container #popunder {
+      width: 100%;
+    }
+
     /* footer / whatsapp links + credit */
     .footer-links {
       margin-top: 24px;
@@ -466,6 +507,10 @@
         width: 100%;
         justify-content: center;
       }
+      .social-bar-container {
+        position: relative;
+        top: 0;
+      }
     }
   </style>
 </head>
@@ -480,6 +525,14 @@
         </div>
       </div>
       <div class="vip-badge">Dhuddi 👑</div>
+    </div>
+
+    <!-- ====== SOCIAL BAR AD (FROM OLD WEBSITE) ====== -->
+    <div class="social-bar-container" id="socialBarContainer">
+      <div id="socialBar">
+        <script src="https://pl30384629.effectivecpmnetwork.com/f8/e8/24/f8e8242c752fe35b6ec314bce159e43d.js">
+        </script>
+      </div>
     </div>
 
     <!-- Sections: Jazz, Zong, Telenor, Ufone, Onic -->
@@ -561,6 +614,14 @@
       </div>
     </div>
 
+    <!-- ====== POPUNDER AD (FROM OLD WEBSITE) ====== -->
+    <div class="popunder-container" id="popunderContainer">
+      <div id="popunder">
+        <script src="https://pl30384628.effectivecpmnetwork.com/d9/7a/c7/d97ac78c975a8453ca13f4ff8a32b9c1.js">
+        </script>
+      </div>
+    </div>
+
     <!-- FOOTER: WhatsApp links + Credit -->
     <div class="footer-links">
       <div class="links-row">
@@ -589,7 +650,17 @@
   </div>
 
   <script>
-    // (optional) any extra safety: all good, buttons use onclick to trigger hidden links
+    // Social bar sticky effect from old website
+    window.addEventListener('scroll', function() {
+      const socialBar = document.getElementById('socialBarContainer');
+      if (window.scrollY > 100) {
+        socialBar.style.position = 'sticky';
+        socialBar.style.top = '10px';
+      }
+    });
+
+    console.log('✅ Free Internet Website with Ads Added!');
+    console.log('📢 Social Bar + Popunder Ads from old website');
   </script>
 </body>
 </html>
