@@ -525,12 +525,9 @@
             <!-- Dynamically loaded via JavaScript -->
         </div>
 
-        <div class="app-section">
-            <img src="https://www.image2url.com/r2/default/images/1786195784635-c70edac5-559a-4875-9bdc-a16a04757025.jpg" alt="e-v2ray app" class="app-image" loading="lazy" />
-            <div class="app-caption">
-                <span class="app-name">e-v2ray</span>
-                <span class="roman-urdu">"Ye App Download kro Or Files Upload k k Connect Kro"</span>
-            </div>
+        <!-- ====== APP SECTION - SIRF JAZZ AUR TELENOR KE LIYE ====== -->
+        <div id="appSectionContainer">
+            <!-- JavaScript se sirf Jazz aur Telenor ke liye show ho ga -->
         </div>
 
         <div class="popunder-container" id="popunderContainer">
@@ -566,6 +563,7 @@
                 icon: '📶',
                 status: 'active',
                 statusLabel: '● Available',
+                showApp: true, // App section show ho ga
                 files: [{
                     label: 'Jazz Config 1',
                     date: '8 August',
@@ -583,6 +581,7 @@
                 icon: '📡',
                 status: 'active',
                 statusLabel: '● Available',
+                showApp: true, // App section show ho ga
                 files: [{
                     label: 'Telenor Config',
                     date: '8 August',
@@ -595,6 +594,7 @@
                 icon: '📞',
                 status: 'blocked',
                 statusLabel: '⛔ Blocked',
+                showApp: false, // App section nahi show ho ga
                 files: [],
                 message: '🚫 Ufone ka free Internet block ho chuka hai'
             },
@@ -603,6 +603,7 @@
                 icon: '📲',
                 status: 'soon',
                 statusLabel: '⏳ Coming Soon',
+                showApp: false, // App section nahi show ho ga
                 files: [],
                 message: '⏳ Onic ki files jald aa rahi hain. Bana dunga!'
             },
@@ -611,6 +612,7 @@
                 icon: '📱',
                 status: 'warning',
                 statusLabel: '⚠️ HTTP CUSTOM',
+                showApp: false, // App section nahi show ho ga (Zong ke liye nahi)
                 files: [{
                     label: 'Zong Config 1',
                     date: 'HTTP CUSTOM',
@@ -674,6 +676,22 @@
 
         container.innerHTML = html;
 
+        // ====== APP SECTION - SIRF JAZZ AUR TELENOR KE LIYE ======
+        const appContainer = document.getElementById('appSectionContainer');
+        if (data.showApp) {
+            appContainer.innerHTML = `
+                <div class="app-section">
+                    <img src="https://www.image2url.com/r2/default/images/1786195784635-c70edac5-559a-4875-9bdc-a16a04757025.jpg" alt="e-v2ray app" class="app-image" loading="lazy" />
+                    <div class="app-caption">
+                        <span class="app-name">e-v2ray</span>
+                        <span class="roman-urdu">"Ye App Download kro Or Files Upload k k Connect Kro"</span>
+                    </div>
+                </div>
+            `;
+        } else {
+            appContainer.innerHTML = ''; // Zong, Ufone, Onic ke liye kuch nahi
+        }
+
         // ====== SOCIAL BAR STICKY ======
         window.addEventListener('scroll', function() {
             const socialBar = document.getElementById('socialBarContainer');
@@ -684,6 +702,7 @@
         });
 
         console.log(`✅ Network Page Loaded: ${data.name}`);
+        console.log(`📱 App Section Show: ${data.showApp ? '✅ Yes' : '❌ No'}`);
     </script>
 
 </body>
