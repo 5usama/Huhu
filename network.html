@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Internet · Network Files</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f6f9fc;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            max-width: 580px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 48px 48px 32px 32px;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08), 0 8px 24px -6px rgba(0, 0, 0, 0.02);
+            padding: 32px 28px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .vip-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 2px solid #f0f4f9;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-main {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #0b1e33, #1b3a5c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .brand-sub {
+            font-size: 15px;
+            font-weight: 600;
+            color: #7e8c9e;
+            letter-spacing: 0.3px;
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .brand-sub span {
+            background: #eef3f8;
+            padding: 2px 12px 2px 10px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #1a2e44;
+            -webkit-text-fill-color: #1a2e44;
+            letter-spacing: 0.2px;
+        }
+
+        .vip-badge {
+            background: linear-gradient(145deg, #e4c15a, #c9a12b);
+            padding: 6px 18px 6px 16px;
+            border-radius: 60px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #0a1a2a;
+            box-shadow: 0 4px 8px rgba(212, 175, 55, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid #f5e08b;
+        }
+
+        .vip-badge::before {
+            content: "★";
+            font-size: 18px;
+            color: #221f0c;
+        }
+
+        /* ADS - Social Bar */
+        .social-bar-container {
+            background: rgba(30, 39, 64, 0.95);
+            padding: 8px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            text-align: center;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: sticky;
+            top: 10px;
+            z-index: 999;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .social-bar-container #socialBar {
+            width: 100%;
+        }
+
+        .back-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            background: #eef3f8;
+            border: none;
+            border-radius: 40px;
+            padding: 8px 18px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #1a2e44;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.15s;
+            border: 1px solid #d7e0e9;
+        }
+
+        .back-btn:hover {
+            background: #dce6f0;
+            transform: scale(0.97);
+        }
+
+        .network-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0b1e33;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .network-title .icon {
+            font-size: 2rem;
+        }
+
+        .network-status {
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 2px 14px;
+            border-radius: 30px;
+            margin-left: 8px;
+        }
+
+        .network-status.active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .network-status.blocked {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .network-status.soon {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .network-status.warning {
+            background: #fce8d5;
+            color: #a04000;
+        }
+
+        .file-card {
+            background: #fafcff;
+            border-radius: 24px;
+            padding: 16px 18px;
+            margin-bottom: 14px;
+            border: 1px solid #e6edf5;
+            transition: 0.15s;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .file-card:hover {
+            border-color: #bdd2e9;
+            background: #f8fbff;
+        }
+
+        .file-info {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .file-label {
+            font-weight: 700;
+            font-size: 16px;
+            color: #0b1e30;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .file-label small {
+            font-weight: 400;
+            font-size: 13px;
+            color: #6c7f94;
+            background: #eef3f9;
+            padding: 0 12px;
+            border-radius: 30px;
+        }
+
+        .file-link {
+            font-size: 13px;
+            color: #2b6c9e;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dashed #b3cbe2;
+            word-break: break-all;
+            margin-top: 4px;
+            max-width: 220px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .btn-download {
+            background: linear-gradient(145deg, #1f3f60, #152c44);
+            border: none;
+            border-radius: 40px;
+            padding: 8px 20px;
+            font-size: 13px;
+            font-weight: 700;
+            color: white;
+            border: 1px solid #3a5f82;
+            box-shadow: 0 4px 8px rgba(0, 20, 40, 0.15);
+            cursor: pointer;
+            transition: 0.15s ease;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-download:hover {
+            background: #264b6e;
+            transform: scale(0.97);
+        }
+
+        .btn-download:active {
+            transform: scale(0.94);
+        }
+
+        .coming-soon-tag {
+            background: #eef2f6;
+            color: #5b6e82;
+            border-radius: 40px;
+            padding: 4px 14px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid #d7e0e9;
+        }
+
+        .blocked-tag {
+            background: #fce8e8;
+            color: #c0392b;
+            border-radius: 40px;
+            padding: 4px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid #f5c6c6;
+        }
+
+        .zong-note {
+            background: #fef9e7;
+            border-left: 4px solid #f39c12;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .zong-note strong {
+            color: #c0392b;
+        }
+
+        .zong-note .highlight-app {
+            background: #2c3e50;
+            color: #fff;
+            padding: 2px 12px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .app-section {
+            margin: 28px 0 20px;
+            background: #f2f8fe;
+            border-radius: 32px;
+            padding: 18px 18px 14px;
+            text-align: center;
+            border: 1px solid #dae6f2;
+        }
+
+        .app-image {
+            width: 100%;
+            max-height: 140px;
+            object-fit: cover;
+            border-radius: 24px;
+            background: #dce6f0;
+        }
+
+        .app-caption {
+            margin-top: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #092032;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px 10px;
+        }
+
+        .app-caption .app-name {
+            background: #0b1f32;
+            padding: 4px 18px 4px 16px;
+            border-radius: 60px;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+            border: 1px solid #263d55;
+        }
+
+        .app-caption .roman-urdu {
+            font-weight: 600;
+            color: #1b3f5c;
+            background: #e4ecf5;
+            padding: 4px 18px;
+            border-radius: 60px;
+            font-size: 16px;
+        }
+
+        .popunder-container {
+            background: rgba(30, 39, 64, 0.8);
+            padding: 10px;
+            border-radius: 16px;
+            margin: 25px 0 10px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            text-align: center;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popunder-container #popunder {
+            width: 100%;
+        }
+
+        .footer-links {
+            margin-top: 24px;
+            padding-top: 18px;
+            border-top: 2px solid #eef3f9;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-links .links-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 6px 14px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            color: #1e3d5e;
+            background: #eef4fa;
+            padding: 4px 16px 4px 14px;
+            border-radius: 60px;
+            border: 1px solid #d3e0ed;
+            transition: 0.1s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .footer-links a:hover {
+            background: #e1ecf8;
+            border-color: #b0c9e2;
+            color: #07273f;
+        }
+
+        .credit-line {
+            margin-top: 14px;
+            text-align: center;
+            font-size: 14px;
+            color: #3e586e;
+            font-weight: 500;
+            line-height: 1.6;
+            background: #f4f8fd;
+            padding: 10px 10px;
+            border-radius: 40px;
+            border: 1px solid #e6eef7;
+        }
+
+        .credit-line .highlight {
+            font-weight: 700;
+            color: #0b263d;
+            background: #dfe9f3;
+            padding: 0 10px;
+            border-radius: 30px;
+        }
+
+        .credit-line .king {
+            font-weight: 800;
+            color: #b8860b;
+            letter-spacing: 0.3px;
+        }
+
+        .credit-line .contact-badge {
+            font-weight: 600;
+            background: #dce6f0;
+            padding: 0 12px;
+            border-radius: 30px;
+            color: #002b4a;
+        }
+
+        .footer-note {
+            font-size: 13px;
+            color: #6f849a;
+            text-align: center;
+            margin-top: 14px;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        .footer-note i {
+            font-style: normal;
+            background: #eef3f9;
+            padding: 2px 10px;
+            border-radius: 30px;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 24px 16px 22px;
+                border-radius: 32px;
+            }
+            .network-title {
+                font-size: 1.4rem;
+                flex-wrap: wrap;
+            }
+            .file-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .btn-download {
+                width: 100%;
+                justify-content: center;
+            }
+            .social-bar-container {
+                position: relative;
+                top: 0;
+            }
+            .app-caption {
+                font-size: 16px;
+                flex-direction: column;
+                gap: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- VIP header -->
+        <div class="vip-header">
+            <div class="brand">
+                <div class="brand-main">Free Internet</div>
+                <div class="brand-sub">
+                    by <span>Usama Dhuddi</span>
+                </div>
+            </div>
+            <div class="vip-badge">Dhuddi 👑</div>
+        </div>
+
+        <!-- SOCIAL BAR AD -->
+        <div class="social-bar-container" id="socialBarContainer">
+            <div id="socialBar">
+                <script src="https://pl30384629.effectivecpmnetwork.com/f8/e8/24/f8e8242c752fe35b6ec314bce159e43d.js">
+                </script>
+            </div>
+        </div>
+
+        <!-- Back & Title -->
+        <div class="back-row">
+            <a href="index.html" class="back-btn">⬅ Back</a>
+            <div class="network-title" id="networkTitle">
+                <span class="icon" id="netIcon">📶</span>
+                <span id="netName">Jazz</span>
+                <span class="network-status active" id="netStatus">● Available</span>
+            </div>
+        </div>
+
+        <!-- Files Container -->
+        <div id="filesContainer">
+            <!-- Dynamically loaded via JavaScript -->
+        </div>
+
+        <!-- App Section -->
+        <div class="app-section">
+            <img src="https://www.image2url.com/r2/default/images/1786195784635-c70edac5-559a-4875-9bdc-a16a04757025.jpg" alt="e-v2ray app" class="app-image" loading="lazy" />
+            <div class="app-caption">
+                <span class="app-name">e-v2ray</span>
+                <span class="roman-urdu">"Ye App Download kro Or Files Upload k k Connect Kro"</span>
+            </div>
+        </div>
+
+        <!-- POPUNDER AD -->
+        <div class="popunder-container" id="popunderContainer">
+            <div id="popunder">
+                <script src="https://pl30384628.effectivecpmnetwork.com/d9/7a/c7/d97ac78c975a8453ca13f4ff8a32b9c1.js">
+                </script>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer-links">
+            <div class="links-row">
+                <a href="https://chat.whatsapp.com/HItKQi26s0KHMteTzGp99b?s=cl&p=a&ilr=0" target="_blank">💬 WhatsApp Group 1</a>
+                <a href="https://chat.whatsapp.com/IWkmYWoOcEG9idQzfvIpjO?s=cl&p=a&ilr=0" target="_blank">💬 WhatsApp Group 2</a>
+                <a href="https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21" target="_blank">📢 WhatsApp Channel</a>
+            </div>
+            <div class="credit-line">
+                <span class="highlight">Created by Usama Dhuddi</span>
+                <span class="contact-badge">(Contact if you want your own Web like this)</span><br />
+                <span class="king">👑 Credit : Rashid King 👑</span>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <i>✦ Select your network to continue ✦</i>
+        </div>
+    </div>
+
+    <script>
+        // ====== DATA ======
+        const networkData = {
+            jazz: {
+                name: 'Jazz',
+                icon: '📶',
+                status: 'active',
+                statusLabel: '● Available',
+                files: [{
+                    label: 'Jazz Config 1',
+                    date: '8 August',
+                    link: 'https://fileshot.io/f/ff799e1ea4ff36af28f528fb62f546ef#k=6y26WmDY984GJ7cWbzzveUT-7xpemc-tN1dea4arsb8&h=CvuPcKT0grxT8vk-NfEjfYUsWl9SblCS5fKn5japNi0',
+                    note: '✅ Works with e-v2ray'
+                }, {
+                    label: 'Jazz Config 2',
+                    date: '8 August',
+                    link: 'https://fileshot.io/f/ff799e1ea4ff36af28f528fb62f546ef#k=6y26WmDY984GJ7cWbzzveUT-7xpemc-tN1dea4arsb8&h=CvuPcKT0grxT8vk-NfEjfYUsWl9SblCS5fKn5japNi0',
+                    note: '✅ Works with e-v2ray'
+                }]
+            },
+            telenor: {
+                name: 'Telenor',
+                icon: '📡',
+                status: 'active',
+                statusLabel: '● Available',
+                files: [{
+                    label: 'Telenor Config',
+                    date: '8 August',
+                    link: 'https://fileshot.io/f/e5b48df5e30bb42d7157b60fd70e6027#k=mNzd0HkAYA1ytroH6rvpPrOHny4_qZMRYvtFDkYROF4&h=yvEdZyiHsPZefCDQiC8WZa8mTGxan3e7WdI7vP7XYuk',
+                    note: '✅ Works with e-v2ray'
+                }]
+            },
+            ufone: {
+                name: 'Ufone',
+                icon: '📞',
+                status: 'blocked',
+                statusLabel: '⛔ Blocked',
+                files: [],
+                message: '🚫 Ufone ka free Internet block ho chuka hai'
+            },
+            onic: {
+                name: 'Onic',
+                icon: '📲',
+                status: 'soon',
+                statusLabel: '⏳ Coming Soon',
+                files: [],
+                message: '⏳ Onic ki files jald aa rahi hain. Bana dunga!'
+            },
+            zong: {
+                name: 'Zong',
+                icon: '📱',
+                status: 'warning',
+                statusLabel: '⚠️ HTTP CUSTOM Required',
+                files: [{
+                    label: 'Zong Config 1',
+                    date: 'HTTP CUSTOM',
+                    link: 'https://drive.google.com/file/d/1UPDMfyDUPqm66VB1lDdzD3DmpTUGpqut/view?usp=drivesdk',
+                    note: '📥 Use with HTTP CUSTOM app'
+                }, {
+                    label: 'Zong Config 2',
+                    date: 'HTTP CUSTOM',
+                    link: 'https://drive.google.com/file/d/1UPDMfyDUPqm66VB1lDdzD3DmpTUGpqut/view?usp=drivesdk',
+                    note: '📥 Use with HTTP CUSTOM app'
+                }],
+                zongNote: '⚠️ Zong ki files e-v2ray app mein nhi chalti. Is k liye <span class="highlight-app">HTTP CUSTOM</span> app chahye hoga.'
+            }
+        };
+
+        // ====== GET NETWORK FROM URL ======
+        const urlParams = new URLSearchParams(window.location.search);
+        const netKey = urlParams.get('net') || 'jazz';
+        const data = networkData[netKey];
+
+        if (!data) {
+            window.location.href = 'index.html';
+        }
+
+        // ====== UPDATE TITLE ======
+        document.getElementById('netIcon').textContent = data.icon;
+        document.getElementById('netName').textContent = data.name;
+        const statusEl = document.getElementById('netStatus');
+        statusEl.textContent = data.statusLabel;
+        statusEl.className = 'network-status ' + data.status;
+
+        // ====== RENDER FILES ======
+        const container = document.getElementById('filesContainer');
+        let html = '';
+
+        // Zong special note
+        if (data.zongNote) {
+            html += `<div class="zong-note">${data.zongNote}</div>`;
+        }
+
+        // Message for blocked/soon
+        if (data.message) {
+            html += `<div style="text-align:center; padding:30px 10px; font-size:1.1rem; color:#6f849a;">${data.message}</div>`;
+        }
+
+        // Files
+        if (data.files && data.files.length > 0) {
+            data.files.forEach((file, index) => {
+                const id = 'fileLink' + index;
+                html += `
+                    <div class="file-card">
+                        <div class="file-info">
+                            <div class="file-label">
+                                ${file.label} <small>${file.date}</small>
+                            </div>
+                            <a href="${file.link}" target="_blank" id="${id}" style="display:none;">${file.link}</a>
+                            <span style="font-size:13px; color:#4f6d88; margin-top:4px;">${file.note}</span>
+                        </div>
+                        <button class="btn-download" onclick="document.getElementById('${id}').click()">⬇ Download</button>
+                    </div>
+                `;
+            });
+        }
+
+        container.innerHTML = html;
+
+        // ====== SOCIAL BAR STICKY ======
+        window.addEventListener('scroll', function() {
+            const socialBar = document.getElementById('socialBarContainer');
+            if (window.scrollY > 100) {
+                socialBar.style.position = 'sticky';
+                socialBar.style.top = '10px';
+            }
+        });
+
+        console.log(`✅ Network Page Loaded: ${data.name}`);
+    </script>
+
+</body>
+</html>

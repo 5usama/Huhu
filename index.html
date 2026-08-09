@@ -1,666 +1,474 @@
 <!DOCTYPE html>
 <html lang="ur">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free Internet · Usama Dhuddi</title>
-  <!-- Google Font (VIP style) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Internet · Select Network</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      background: #f6f9fc;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
+        body {
+            background: #f6f9fc;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-    .card {
-      max-width: 580px;
-      width: 100%;
-      background: #ffffff;
-      border-radius: 48px 48px 32px 32px;
-      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08), 0 8px 24px -6px rgba(0, 0, 0, 0.02);
-      padding: 32px 28px 28px;
-      transition: all 0.2s ease;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(2px);
-    }
+        .card {
+            max-width: 580px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 48px 48px 32px 32px;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08), 0 8px 24px -6px rgba(0, 0, 0, 0.02);
+            padding: 32px 28px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
 
-    /* VIP header */
-    .vip-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      border-bottom: 2px solid #f0f4f9;
-      padding-bottom: 16px;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-    }
+        .vip-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 2px solid #f0f4f9;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
 
-    .brand {
-      display: flex;
-      flex-direction: column;
-    }
+        .brand {
+            display: flex;
+            flex-direction: column;
+        }
 
-    .brand-main {
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #0b1e33, #1b3a5c);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1.2;
-    }
+        .brand-main {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #0b1e33, #1b3a5c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
 
-    .brand-sub {
-      font-size: 15px;
-      font-weight: 600;
-      color: #7e8c9e;
-      letter-spacing: 0.3px;
-      margin-top: 2px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+        .brand-sub {
+            font-size: 15px;
+            font-weight: 600;
+            color: #7e8c9e;
+            letter-spacing: 0.3px;
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-    .brand-sub span {
-      background: #eef3f8;
-      padding: 2px 12px 2px 10px;
-      border-radius: 40px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #1a2e44;
-      -webkit-text-fill-color: #1a2e44;
-      letter-spacing: 0.2px;
-    }
+        .brand-sub span {
+            background: #eef3f8;
+            padding: 2px 12px 2px 10px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #1a2e44;
+            -webkit-text-fill-color: #1a2e44;
+            letter-spacing: 0.2px;
+        }
 
-    .vip-badge {
-      background: #d4af37;
-      background: linear-gradient(145deg, #e4c15a, #c9a12b);
-      padding: 6px 18px 6px 16px;
-      border-radius: 60px;
-      font-size: 15px;
-      font-weight: 700;
-      color: #0a1a2a;
-      box-shadow: 0 4px 8px rgba(212, 175, 55, 0.2);
-      letter-spacing: 0.3px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border: 1px solid #f5e08b;
-    }
+        .vip-badge {
+            background: linear-gradient(145deg, #e4c15a, #c9a12b);
+            padding: 6px 18px 6px 16px;
+            border-radius: 60px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #0a1a2a;
+            box-shadow: 0 4px 8px rgba(212, 175, 55, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid #f5e08b;
+        }
 
-    .vip-badge::before {
-      content: "★";
-      font-size: 18px;
-      color: #221f0c;
-    }
+        .vip-badge::before {
+            content: "★";
+            font-size: 18px;
+            color: #221f0c;
+        }
 
-    /* ADS - Social Bar (from old website) */
-    .social-bar-container {
-      background: rgba(30, 39, 64, 0.95);
-      padding: 8px;
-      border-radius: 16px;
-      margin-bottom: 25px;
-      border: 1px solid rgba(0, 212, 255, 0.2);
-      text-align: center;
-      min-height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: sticky;
-      top: 10px;
-      z-index: 999;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    }
+        /* ADS - Social Bar */
+        .social-bar-container {
+            background: rgba(30, 39, 64, 0.95);
+            padding: 8px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            text-align: center;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: sticky;
+            top: 10px;
+            z-index: 999;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
 
-    .social-bar-container #socialBar {
-      width: 100%;
-    }
+        .social-bar-container #socialBar {
+            width: 100%;
+        }
 
-    /* sections grid */
-    .sections {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 20px 0 28px;
-    }
+        .main-title {
+            text-align: center;
+            margin: 20px 0 28px;
+        }
 
-    .section-item {
-      background: #f2f6fb;
-      border-radius: 20px;
-      padding: 12px 4px;
-      text-align: center;
-      font-weight: 600;
-      font-size: 16px;
-      color: #1d3349;
-      transition: 0.15s ease;
-      border: 1px solid transparent;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-      letter-spacing: -0.2px;
-    }
+        .main-title h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0b1e33;
+            letter-spacing: -0.5px;
+        }
 
-    .section-item.jazz {
-      background: #e4edf8;
-      border-color: #b7cee8;
-    }
-    .section-item.zong {
-      background: #eef3f0;
-      border-color: #c7dbd0;
-    }
-    .section-item.telenor {
-      background: #e1eef5;
-      border-color: #b3d2e3;
-    }
-    .section-item.ufone {
-      background: #f0eff7;
-      border-color: #cdc9e6;
-    }
-    .section-item.onic {
-      background: #f3edf2;
-      border-color: #ddc9d9;
-    }
-    .section-item.coming {
-      opacity: 0.7;
-      background: #f2f2f2;
-      border-color: #d9d9d9;
-      color: #5f6f7e;
-      font-weight: 500;
-    }
-    .section-item.coming::after {
-      content: " soon";
-      font-size: 11px;
-      font-weight: 400;
-      color: #8899aa;
-      display: block;
-      margin-top: 2px;
-    }
+        .main-title p {
+            color: #6f849a;
+            font-size: 1rem;
+            margin-top: 6px;
+            font-weight: 400;
+        }
 
-    /* file cards */
-    .file-card {
-      background: #fafcff;
-      border-radius: 24px;
-      padding: 16px 18px;
-      margin-bottom: 14px;
-      border: 1px solid #e6edf5;
-      transition: 0.15s;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-    }
+        .network-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 30px;
+        }
 
-    .file-card:hover {
-      border-color: #bdd2e9;
-      background: #f8fbff;
-    }
+        .network-btn {
+            background: #f2f6fb;
+            border: 2px solid #e6edf5;
+            border-radius: 24px;
+            padding: 20px 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            color: #0b1e33;
+        }
 
-    .file-info {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
+        .network-btn:hover {
+            transform: translateY(-4px);
+            border-color: #0b1e33;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        }
 
-    .file-label {
-      font-weight: 700;
-      font-size: 16px;
-      color: #0b1e30;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+        .network-btn .icon {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 6px;
+        }
 
-    .file-label small {
-      font-weight: 400;
-      font-size: 13px;
-      color: #6c7f94;
-      background: #eef3f9;
-      padding: 0 12px;
-      border-radius: 30px;
-    }
+        .network-btn .name {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
 
-    .file-link {
-      font-size: 13px;
-      color: #2b6c9e;
-      font-weight: 500;
-      text-decoration: none;
-      border-bottom: 1px dashed #b3cbe2;
-      word-break: break-all;
-      margin-top: 4px;
-      max-width: 220px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+        .network-btn .status {
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-top: 4px;
+            display: block;
+        }
 
-    .file-link:hover {
-      color: #0b3d63;
-      border-bottom-color: #0b3d63;
-    }
+        .network-btn .status.active {
+            color: #27ae60;
+        }
 
-    /* DOWNLOAD BUTTON - now triggers the link */
-    .btn-download {
-      background: #1d3b5a;
-      background: linear-gradient(145deg, #1f3f60, #152c44);
-      border: none;
-      border-radius: 40px;
-      padding: 8px 20px;
-      font-size: 13px;
-      font-weight: 700;
-      color: white;
-      border: 1px solid #3a5f82;
-      box-shadow: 0 4px 8px rgba(0, 20, 40, 0.15);
-      cursor: pointer;
-      transition: 0.15s ease;
-      white-space: nowrap;
-      letter-spacing: 0.3px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
+        .network-btn .status.blocked {
+            color: #c0392b;
+        }
 
-    .btn-download:hover {
-      background: #264b6e;
-      transform: scale(0.97);
-      box-shadow: 0 2px 6px rgba(0, 20, 40, 0.2);
-    }
+        .network-btn .status.soon {
+            color: #f39c12;
+        }
 
-    .btn-download:active {
-      transform: scale(0.94);
-    }
+        .network-btn .status.warning {
+            color: #e67e22;
+        }
 
-    .coming-soon-tag {
-      background: #eef2f6;
-      color: #5b6e82;
-      border-radius: 40px;
-      padding: 4px 14px;
-      font-size: 12px;
-      font-weight: 500;
-      border: 1px solid #d7e0e9;
-    }
+        .network-btn.jazz {
+            background: #e4edf8;
+            border-color: #b7cee8;
+        }
+        .network-btn.telenor {
+            background: #e1eef5;
+            border-color: #b3d2e3;
+        }
+        .network-btn.ufone {
+            background: #f0eff7;
+            border-color: #cdc9e6;
+        }
+        .network-btn.onic {
+            background: #f3edf2;
+            border-color: #ddc9d9;
+        }
+        .network-btn.zong {
+            background: #eef3f0;
+            border-color: #c7dbd0;
+        }
 
-    /* app image + caption */
-    .app-section {
-      margin: 28px 0 20px;
-      background: #f2f8fe;
-      border-radius: 32px;
-      padding: 18px 18px 14px;
-      text-align: center;
-      border: 1px solid #dae6f2;
-    }
+        .network-btn.full-width {
+            grid-column: 1 / -1;
+        }
 
-    .app-image {
-      width: 100%;
-      max-height: 140px;
-      object-fit: cover;
-      border-radius: 24px;
-      background: #dce6f0;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-    }
+        /* ADS - Popunder */
+        .popunder-container {
+            background: rgba(30, 39, 64, 0.8);
+            padding: 10px;
+            border-radius: 16px;
+            margin: 25px 0 10px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            text-align: center;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .app-caption {
-      margin-top: 12px;
-      font-size: 18px;
-      font-weight: 700;
-      color: #092032;
-      letter-spacing: -0.2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 6px 10px;
-    }
+        .popunder-container #popunder {
+            width: 100%;
+        }
 
-    .app-caption .app-name {
-      background: #0b1f32;
-      padding: 4px 18px 4px 16px;
-      border-radius: 60px;
-      color: white;
-      font-weight: 700;
-      font-size: 18px;
-      letter-spacing: 0.5px;
-      border: 1px solid #263d55;
-    }
+        .footer-links {
+            margin-top: 24px;
+            padding-top: 18px;
+            border-top: 2px solid #eef3f9;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
 
-    .app-caption .roman-urdu {
-      font-weight: 600;
-      color: #1b3f5c;
-      background: #e4ecf5;
-      padding: 4px 18px;
-      border-radius: 60px;
-      font-size: 16px;
-    }
+        .footer-links .links-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 6px 14px;
+        }
 
-    /* ADS - Popunder (from old website) */
-    .popunder-container {
-      background: rgba(30, 39, 64, 0.8);
-      padding: 10px;
-      border-radius: 16px;
-      margin: 25px 0 10px;
-      border: 1px solid rgba(255, 107, 53, 0.2);
-      text-align: center;
-      min-height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        .footer-links a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            color: #1e3d5e;
+            background: #eef4fa;
+            padding: 4px 16px 4px 14px;
+            border-radius: 60px;
+            border: 1px solid #d3e0ed;
+            transition: 0.1s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
 
-    .popunder-container #popunder {
-      width: 100%;
-    }
+        .footer-links a:hover {
+            background: #e1ecf8;
+            border-color: #b0c9e2;
+            color: #07273f;
+        }
 
-    /* footer / whatsapp links + credit */
-    .footer-links {
-      margin-top: 24px;
-      padding-top: 18px;
-      border-top: 2px solid #eef3f9;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+        .credit-line {
+            margin-top: 14px;
+            text-align: center;
+            font-size: 14px;
+            color: #3e586e;
+            font-weight: 500;
+            line-height: 1.6;
+            background: #f4f8fd;
+            padding: 10px 10px;
+            border-radius: 40px;
+            border: 1px solid #e6eef7;
+        }
 
-    .footer-links .links-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 6px 14px;
-    }
+        .credit-line .highlight {
+            font-weight: 700;
+            color: #0b263d;
+            background: #dfe9f3;
+            padding: 0 10px;
+            border-radius: 30px;
+        }
 
-    .footer-links a {
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      color: #1e3d5e;
-      background: #eef4fa;
-      padding: 4px 16px 4px 14px;
-      border-radius: 60px;
-      border: 1px solid #d3e0ed;
-      transition: 0.1s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      letter-spacing: -0.1px;
-    }
+        .credit-line .king {
+            font-weight: 800;
+            color: #b8860b;
+            letter-spacing: 0.3px;
+        }
 
-    .footer-links a:hover {
-      background: #e1ecf8;
-      border-color: #b0c9e2;
-      color: #07273f;
-    }
+        .credit-line .contact-badge {
+            font-weight: 600;
+            background: #dce6f0;
+            padding: 0 12px;
+            border-radius: 30px;
+            color: #002b4a;
+        }
 
-    .footer-links a i {
-      font-style: normal;
-      font-size: 16px;
-      margin-right: 2px;
-    }
+        .footer-note {
+            font-size: 13px;
+            color: #6f849a;
+            text-align: center;
+            margin-top: 14px;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
 
-    .credit-line {
-      margin-top: 14px;
-      text-align: center;
-      font-size: 14px;
-      color: #3e586e;
-      font-weight: 500;
-      line-height: 1.6;
-      background: #f4f8fd;
-      padding: 10px 10px;
-      border-radius: 40px;
-      border: 1px solid #e6eef7;
-    }
+        .footer-note i {
+            font-style: normal;
+            background: #eef3f9;
+            padding: 2px 10px;
+            border-radius: 30px;
+        }
 
-    .credit-line .highlight {
-      font-weight: 700;
-      color: #0b263d;
-      background: #dfe9f3;
-      padding: 0 10px;
-      border-radius: 30px;
-    }
-
-    .credit-line .king {
-      font-weight: 800;
-      color: #b8860b;
-      letter-spacing: 0.3px;
-    }
-
-    .credit-line .contact-badge {
-      font-weight: 600;
-      background: #dce6f0;
-      padding: 0 12px;
-      border-radius: 30px;
-      color: #002b4a;
-    }
-
-    .footer-note {
-      font-size: 13px;
-      color: #6f849a;
-      text-align: center;
-      margin-top: 14px;
-      font-weight: 400;
-      letter-spacing: 0.2px;
-    }
-
-    .footer-note i {
-      font-style: normal;
-      background: #eef3f9;
-      padding: 2px 10px;
-      border-radius: 30px;
-    }
-
-    /* Responsive */
-    @media (max-width: 480px) {
-      .card {
-        padding: 24px 16px 22px;
-        border-radius: 32px;
-      }
-      .sections {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-      }
-      .section-item {
-        font-size: 14px;
-        padding: 10px 2px;
-      }
-      .vip-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
-      .vip-badge {
-        font-size: 14px;
-        padding: 4px 14px;
-      }
-      .file-card {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-      .file-link {
-        max-width: 100%;
-        white-space: normal;
-      }
-      .app-caption {
-        font-size: 16px;
-        flex-direction: column;
-        gap: 6px;
-      }
-      .footer-links .links-row {
-        gap: 6px 8px;
-      }
-      .footer-links a {
-        font-size: 12px;
-        padding: 3px 12px;
-      }
-      .btn-download {
-        width: 100%;
-        justify-content: center;
-      }
-      .social-bar-container {
-        position: relative;
-        top: 0;
-      }
-    }
-  </style>
+        @media (max-width: 480px) {
+            .card {
+                padding: 24px 16px 22px;
+                border-radius: 32px;
+            }
+            .main-title h2 {
+                font-size: 1.5rem;
+            }
+            .network-grid {
+                gap: 10px;
+            }
+            .network-btn {
+                padding: 16px 10px;
+            }
+            .network-btn .icon {
+                font-size: 2.2rem;
+            }
+            .network-btn .name {
+                font-size: 1rem;
+            }
+            .social-bar-container {
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <!-- VIP header -->
-    <div class="vip-header">
-      <div class="brand">
-        <div class="brand-main">Free Internet</div>
-        <div class="brand-sub">
-          by <span>Usama Dhuddi</span>
+
+    <div class="card">
+        <!-- VIP header -->
+        <div class="vip-header">
+            <div class="brand">
+                <div class="brand-main">Free Internet</div>
+                <div class="brand-sub">
+                    by <span>Usama Dhuddi</span>
+                </div>
+            </div>
+            <div class="vip-badge">Dhuddi 👑</div>
         </div>
-      </div>
-      <div class="vip-badge">Dhuddi 👑</div>
-    </div>
 
-    <!-- ====== SOCIAL BAR AD (FROM OLD WEBSITE) ====== -->
-    <div class="social-bar-container" id="socialBarContainer">
-      <div id="socialBar">
-        <script src="https://pl30384629.effectivecpmnetwork.com/f8/e8/24/f8e8242c752fe35b6ec314bce159e43d.js">
-        </script>
-      </div>
-    </div>
-
-    <!-- Sections: Jazz, Zong, Telenor, Ufone, Onic -->
-    <div class="sections">
-      <div class="section-item jazz">Jazz</div>
-      <div class="section-item zong">Zong</div>
-      <div class="section-item telenor">Telenor</div>
-      <div class="section-item ufone">Ufone</div>
-      <div class="section-item onic">Onic</div>
-    </div>
-
-    <!-- Jazz file (provided) - button triggers link -->
-    <div class="file-card">
-      <div class="file-info">
-        <div class="file-label">
-          Jazz <small>8 August</small>
+        <!-- SOCIAL BAR AD -->
+        <div class="social-bar-container" id="socialBarContainer">
+            <div id="socialBar">
+                <script src="https://pl30384629.effectivecpmnetwork.com/f8/e8/24/f8e8242c752fe35b6ec314bce159e43d.js">
+                </script>
+            </div>
         </div>
-        <!-- link hidden, only for reference, but we use button -->
-        <a href="https://fileshot.io/f/ff799e1ea4ff36af28f528fb62f546ef#k=6y26WmDY984GJ7cWbzzveUT-7xpemc-tN1dea4arsb8&h=CvuPcKT0grxT8vk-NfEjfYUsWl9SblCS5fKn5japNi0" target="_blank" class="file-link" id="jazzLink" style="display:none;">fileshot.io/f/ff799e...</a>
-        <span style="font-size:13px; color:#4f6d88; margin-top:4px;">Tap button to download</span>
-      </div>
-      <button class="btn-download" onclick="document.getElementById('jazzLink').click()">⬇ Download</button>
-    </div>
 
-    <!-- Telenor file (provided) - button triggers link -->
-    <div class="file-card">
-      <div class="file-info">
-        <div class="file-label">
-          Telenor <small>8 August</small>
+        <!-- Main Title -->
+        <div class="main-title">
+            <h2>📱 Select Your Network</h2>
+            <p>Choose your network to see available configs</p>
         </div>
-        <a href="https://fileshot.io/f/e5b48df5e30bb42d7157b60fd70e6027#k=mNzd0HkAYA1ytroH6rvpPrOHny4_qZMRYvtFDkYROF4&h=yvEdZyiHsPZefCDQiC8WZa8mTGxan3e7WdI7vP7XYuk" target="_blank" class="file-link" id="telenorLink" style="display:none;">fileshot.io/f/e5b48d...</a>
-        <span style="font-size:13px; color:#4f6d88; margin-top:4px;">Tap button to download</span>
-      </div>
-      <button class="btn-download" onclick="document.getElementById('telenorLink').click()">⬇ Download</button>
-    </div>
 
-    <!-- Zong, Ufone, Onic coming soon -->
-    <div class="file-card" style="opacity:0.75;">
-      <div class="file-info">
-        <div class="file-label">
-          Zong <small>coming soon</small>
+        <!-- Network Grid -->
+        <div class="network-grid">
+            <a href="network.html?net=jazz" class="network-btn jazz">
+                <span class="icon">📶</span>
+                <span class="name">Jazz</span>
+                <span class="status active">● Available</span>
+            </a>
+
+            <a href="network.html?net=telenor" class="network-btn telenor">
+                <span class="icon">📡</span>
+                <span class="name">Telenor</span>
+                <span class="status active">● Available</span>
+            </a>
+
+            <a href="network.html?net=ufone" class="network-btn ufone">
+                <span class="icon">📞</span>
+                <span class="name">Ufone</span>
+                <span class="status blocked">⛔ Blocked</span>
+            </a>
+
+            <a href="network.html?net=onic" class="network-btn onic">
+                <span class="icon">📲</span>
+                <span class="name">Onic</span>
+                <span class="status soon">⏳ Coming Soon</span>
+            </a>
+
+            <a href="network.html?net=zong" class="network-btn zong full-width">
+                <span class="icon">📱</span>
+                <span class="name">Zong</span>
+                <span class="status warning">⚠️ HTTP CUSTOM Required</span>
+            </a>
         </div>
-        <span class="file-link" style="color:#8299ae; border-bottom: none;">—</span>
-      </div>
-      <span class="coming-soon-tag">soon</span>
-    </div>
 
-    <div class="file-card" style="opacity:0.75;">
-      <div class="file-info">
-        <div class="file-label">
-          Ufone <small>coming soon</small>
+        <!-- POPUNDER AD -->
+        <div class="popunder-container" id="popunderContainer">
+            <div id="popunder">
+                <script src="https://pl30384628.effectivecpmnetwork.com/d9/7a/c7/d97ac78c975a8453ca13f4ff8a32b9c1.js">
+                </script>
+            </div>
         </div>
-        <span class="file-link" style="color:#8299ae; border-bottom: none;">—</span>
-      </div>
-      <span class="coming-soon-tag">soon</span>
-    </div>
 
-    <div class="file-card" style="opacity:0.75;">
-      <div class="file-info">
-        <div class="file-label">
-          Onic <small>coming soon</small>
+        <!-- FOOTER -->
+        <div class="footer-links">
+            <div class="links-row">
+                <a href="https://chat.whatsapp.com/HItKQi26s0KHMteTzGp99b?s=cl&p=a&ilr=0" target="_blank">
+                    💬 WhatsApp Group 1
+                </a>
+                <a href="https://chat.whatsapp.com/IWkmYWoOcEG9idQzfvIpjO?s=cl&p=a&ilr=0" target="_blank">
+                    💬 WhatsApp Group 2
+                </a>
+                <a href="https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21" target="_blank">
+                    📢 WhatsApp Channel
+                </a>
+            </div>
+
+            <div class="credit-line">
+                <span class="highlight">Created by Usama Dhuddi</span>
+                <span class="contact-badge">(Contact if you want your own Web like this)</span>
+                <br />
+                <span class="king">👑 Credit : Rashid King 👑</span>
+            </div>
         </div>
-        <span class="file-link" style="color:#8299ae; border-bottom: none;">—</span>
-      </div>
-      <span class="coming-soon-tag">soon</span>
+
+        <div class="footer-note">
+            <i>✦ Select your network to continue ✦</i>
+        </div>
     </div>
 
-    <!-- App image + caption -->
-    <div class="app-section">
-      <img 
-        src="https://www.image2url.com/r2/default/images/1786195784635-c70edac5-559a-4875-9bdc-a16a04757025.jpg" 
-        alt="e-v2ray app" 
-        class="app-image"
-        loading="lazy"
-      />
-      <div class="app-caption">
-        <span class="app-name">e-v2ray</span>
-        <span class="roman-urdu">"Ye App Download kro Or Files Upload k k Connect Kro"</span>
-      </div>
-    </div>
+    <script>
+        window.addEventListener('scroll', function() {
+            const socialBar = document.getElementById('socialBarContainer');
+            if (window.scrollY > 100) {
+                socialBar.style.position = 'sticky';
+                socialBar.style.top = '10px';
+            }
+        });
 
-    <!-- ====== POPUNDER AD (FROM OLD WEBSITE) ====== -->
-    <div class="popunder-container" id="popunderContainer">
-      <div id="popunder">
-        <script src="https://pl30384628.effectivecpmnetwork.com/d9/7a/c7/d97ac78c975a8453ca13f4ff8a32b9c1.js">
-        </script>
-      </div>
-    </div>
+        console.log('✅ Select Network Page Loaded!');
+    </script>
 
-    <!-- FOOTER: WhatsApp links + Credit -->
-    <div class="footer-links">
-      <div class="links-row">
-        <a href="https://chat.whatsapp.com/HItKQi26s0KHMteTzGp99b?s=cl&p=a&ilr=0" target="_blank" rel="noopener">
-          <i>💬</i> WhatsApp Group 1
-        </a>
-        <a href="https://chat.whatsapp.com/IWkmYWoOcEG9idQzfvIpjO?s=cl&p=a&ilr=0" target="_blank" rel="noopener">
-          <i>💬</i> WhatsApp Group 2
-        </a>
-        <a href="https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21" target="_blank" rel="noopener">
-          <i>📢</i> WhatsApp Channel
-        </a>
-      </div>
-
-      <div class="credit-line">
-        <span class="highlight">Created by Usama Dhuddi</span>  
-        <span class="contact-badge">(Contact if you want your own Web like this)</span>  
-        <br />
-        <span class="king">👑 Credit : Rashid King 👑</span>
-      </div>
-    </div>
-
-    <div class="footer-note">
-      <i>✦ Created : 08 August 2026✦</i>
-    </div>
-  </div>
-
-  <script>
-    // Social bar sticky effect from old website
-    window.addEventListener('scroll', function() {
-      const socialBar = document.getElementById('socialBarContainer');
-      if (window.scrollY > 100) {
-        socialBar.style.position = 'sticky';
-        socialBar.style.top = '10px';
-      }
-    });
-
-    console.log('✅ Free Internet Website with Ads Added!');
-    console.log('📢 Social Bar + Popunder Ads from old website');
-  </script>
 </body>
 </html>
